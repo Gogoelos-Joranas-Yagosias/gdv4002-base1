@@ -358,18 +358,17 @@ bool deleteObject(const char* key) {
 		gameObjects.erase(iter);
 
 		// Now we need to string-match objKey to the objectCount array.
-		// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.
-		// When found we decrement the count.  If it reaches zero erase the key from the count array
+		// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.  When found we decrement the count.
 		for (auto countIter = objectCount.begin(); countIter != objectCount.end(); countIter++) {
 
 			if (objKey.find(countIter->first) != std::string::npos) {
 
 				countIter->second = countIter->second - 1; // decrement count
 
-				if (countIter->second == 0) {
+				/*if (countIter->second == 0) {
 
 					objectCount.erase(countIter);
-				}
+				}*/
 
 				break;
 			}
@@ -403,18 +402,17 @@ bool deleteObject(GameObject2D* objectPtr) {
 			objectErased = true;
 
 			// Now we need to string-match objKey to the objectCount array.
-			// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.
-			// When found we decrememt the count.  If it reaches zero erase the key from the count array
+			// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.  When found we decrememt the count.
 			for (auto countIter = objectCount.begin(); countIter != objectCount.end(); countIter++) {
 
 				if (objKey.find(countIter->first) != std::string::npos) {
 
 					countIter->second = countIter->second - 1; // decrement count
 
-					if (countIter->second == 0) {
+					/*if (countIter->second == 0) {
 
 						objectCount.erase(countIter);
-					}
+					}*/
 
 					break;
 				}
@@ -447,18 +445,17 @@ int deleteMatchingObjects(const char* key) {
 			eraseCount++;
 
 			// Now we need to string-match objKey to the objectCount array.
-			// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.
-			// When found we decrememt the count.  If it reaches zero erase the key from the count array
+			// objectCount keys are a substring of gameObject keys that have numbers appended to differentiate.  When found we decrememt the count.
 			for (auto countIter = objectCount.begin(); countIter != objectCount.end(); countIter++) {
 
 				if (objKey.find(countIter->first) != std::string::npos) {
 
 					countIter->second = countIter->second - 1; // decrement count
 
-					if (countIter->second == 0) {
+					/*if (countIter->second == 0) {
 
 						objectCount.erase(countIter);
-					}
+					}*/
 
 					break;
 				}
