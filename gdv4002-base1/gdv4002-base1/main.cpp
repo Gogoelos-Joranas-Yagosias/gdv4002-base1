@@ -2,7 +2,7 @@
 #include "Keys.h"
 #include <bitset>
 #include "Player.h"
-
+#include "Asteroid.h"
 
 
 // Function prototypes
@@ -10,6 +10,7 @@ void myKeyboardHandler(GLFWwindow* window, int key, int scancode, int action, in
 
 // Global Variables
 std::bitset<5> keys{ 0x0 };
+
 
 int main(void) {
 
@@ -26,12 +27,18 @@ int main(void) {
 	//
 	//  Game scene objects
 	//
-	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png");
+	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png"); // Creation of player
 
-	Player* mainPlayer = new Player(glm::vec2(-1.5f, 0.0f), 0.0f, glm::vec2(0.5f, 0.5f), playerTexture, 1.0f);
+	Player* mainPlayer = new Player(glm::vec2(-1.0f, 0.0f), 1.5f, glm::vec2(0.5f, 0.5f), playerTexture, 1.0f);
 
 	addObject("player", mainPlayer);
 
+	// create asteroid enemies
+	// 1. Load asteroid texture 
+	GLuint enemyTexture = loadTexture("Resources\\Textures\\alien01.png");
+
+	// 2. Create enemy objects
+	
 	//
 	// Set callback functions
 	//
