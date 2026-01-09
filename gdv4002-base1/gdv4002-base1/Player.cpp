@@ -21,7 +21,7 @@ Player::Player(glm::vec2 initPosition, float initOrientation, glm::vec2 initSize
 void Player::update(double tDelta) {
 
 	glm::vec2 F = glm::vec2(0.0f, 0.0f);
-	float anglespersecond = glm::radians(80.0);
+	float anglespersecond = glm::radians(100.0);
 	const float thrust = 10.0f;
 
 	// 1. accumulate forces
@@ -34,7 +34,7 @@ void Player::update(double tDelta) {
 	if (keys.test(Key::S) == true) 
 	{
 		
-		F -= glm::vec2(cos(orientation) * thrust, sin(orientation) * thrust););
+		F -= glm::vec2(cos(orientation) * thrust, sin(orientation) * thrust);
 	}
 	if (keys.test(Key::A) == true) 
 	{
