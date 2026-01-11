@@ -3,10 +3,13 @@
 #include <bitset>
 #include "Player.h"
 #include "Asteroid.h"
+#include "Bullets.h"
+#include "Emitter.h"
 
 
 // Function prototypes
 void myKeyboardHandler(GLFWwindow* window, int key, int scancode, int action, int mods);
+
 
 // Global Variables
 std::bitset<5> keys{ 0x0 };
@@ -27,18 +30,33 @@ int main(void) {
 	//
 	//  Game scene objects
 	//
+
+
 	GLuint playerTexture = loadTexture("Resources\\Textures\\player1_ship.png"); // Creation of player
 
 	Player* mainPlayer = new Player(glm::vec2(-1.0f, 0.0f), 1.5f, glm::vec2(0.5f, 0.5f), playerTexture, 1.0f);
 
 	addObject("player", mainPlayer);
+	
+	
+	
 
+	Emitter* emitter = new Emitter(
+		glm::vec2(1.0f, 1.0f),
+		glm::vec2(2.0f, 0.0f),
+		0.05f);
+
+	addObject("emitter", emitter);
+	
 	// Create asteroid enemies
 	//Creating texture
 	GLuint enemyTexture = loadTexture("Resources\\Textures\\Asteroid.png");
 	
 	// creating asteroid objects
+	Bullets* Bullet = new Bullets(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f, 0.5f), enemyTexture, 7.0f);
+
 	
+
 	Enemy* enemy1 = new Enemy(glm::vec2(0.0f, 0.0f), 0.0f, glm::vec2(0.5f, 0.5f), enemyTexture, 5.0f, glm::radians(45.0f), 7.0f);
 	Enemy* enemy2 = new Enemy(glm::vec2(1.0f, 0.0f), 0.0f, glm::vec2(0.5f, 0.5f), enemyTexture, 5.0f, glm::radians(45.0f), 7.0f);
 	Enemy* enemy3 = new Enemy(glm::vec2(2.0f, 0.0f), 0.0f, glm::vec2(0.5f, 0.5f), enemyTexture, 5.0f, glm::radians(45.0f), 7.0f);
@@ -52,10 +70,11 @@ int main(void) {
 	// Set callback functions
 	//
 	
+	
 	setKeyboardHandler(myKeyboardHandler);
 	// Enter main loop - this handles update and render calls
 	engineMainLoop();
-
+	
 	// When we quit (close window for example), clean up engine resources
 	engineShutdown();
 
@@ -141,3 +160,6 @@ void myKeyboardHandler(GLFWwindow* window, int key, int scancode, int action, in
 
 	}
 }
+
+
+

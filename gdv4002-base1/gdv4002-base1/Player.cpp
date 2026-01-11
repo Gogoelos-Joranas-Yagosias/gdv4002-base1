@@ -4,6 +4,7 @@
 #include "Engine.h"
 #include <cmath>
 #include <iostream>
+#include "GameObject2D.h"
 
 // global variables
 extern std::bitset<5> keys;
@@ -15,6 +16,7 @@ Player::Player(glm::vec2 initPosition, float initOrientation, glm::vec2 initSize
 
 	velocity = glm::vec2(0.0f, 0.0f); // default to 0 velocity
 
+	
 }
 
 
@@ -75,3 +77,5 @@ void Player::update(double tDelta) {
 		position.x = -getViewplaneWidth() / 2.0;
 	}
 }
+
+
